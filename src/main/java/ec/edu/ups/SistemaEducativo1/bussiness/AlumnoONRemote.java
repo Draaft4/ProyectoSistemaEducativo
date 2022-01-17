@@ -9,4 +9,6 @@ public interface AlumnoONRemote {
 	
 	public void crearAlumno(Alumno a) throws Exception;
 	
+	public Alumno obtenerAlumno(int id) throws Exception;
+	
 }

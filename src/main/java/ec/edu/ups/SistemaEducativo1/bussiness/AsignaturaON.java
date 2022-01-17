@@ -16,4 +16,8 @@ public class AsignaturaON implements AsignaturaONLocal,AsignaturaONRemote{
 		dao.insert(a);
 	}
 	
+	public Asignatura obtenerAsignatura(int codigo) throws Exception{
+		return dao.read(codigo);
+	}
+	
 }

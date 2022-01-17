@@ -22,13 +22,13 @@ public class AsignaturaDAO {
 		throw new Exception("Se ha actualizado correctamente");
 	}
 	
-	public Asignatura read(String cedula) {
-		Asignatura asig = em.find(Asignatura.class, cedula);
+	public Asignatura read(int codigo) {
+		Asignatura asig = em.find(Asignatura.class, codigo);
 		return asig;
 	}
 	
-	public void delete(String cedula) throws Exception{
-		Asignatura asig = em.find(Asignatura.class, cedula);
+	public void delete(int codigo) throws Exception{
+		Asignatura asig = em.find(Asignatura.class, codigo);
 		em.remove(asig);
 		throw new Exception("Se ha eliminado correctamente");
 	}

@@ -172,7 +172,15 @@
             <artifactId>arquillian-protocol-servlet</artifactId>
             <scope>test</scope>               
         </dependency>
+        
+        <dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-naming</artifactId>
+			<version>24.0.1.Final</version>
+		</dependency>
     </dependencies>
+    
+    
 	
     <build>
         <!-- Tell Maven that the resulting file should not have a file name containing the version - 

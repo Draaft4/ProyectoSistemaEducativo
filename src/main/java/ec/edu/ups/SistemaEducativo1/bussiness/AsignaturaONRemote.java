@@ -9,4 +9,6 @@ public interface AsignaturaONRemote {
 	
 	public void crearAsignatura(Asignatura a) throws Exception;
 	
+	public Asignatura obtenerAsignatura(int codigo) throws Exception;
+	
 }

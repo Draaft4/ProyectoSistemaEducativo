@@ -1,5 +1,6 @@
 package ec.edu.ups.SistemaEducativo1.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "TBL_Asignatura")
-public class Asignatura {
+public class Asignatura implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,7 +93,10 @@ public class Asignatura {
 	}
 
 	
-
+	@Override
+	public String toString() {
+		return "Asignatura [codigo=" + codigo + ", numHoras=" + numHoras + ", nombreAsignatura=" + nombreAsignatura+ "]";
+	}
 	
 	
 	

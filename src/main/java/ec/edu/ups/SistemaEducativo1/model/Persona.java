@@ -1,5 +1,6 @@
 package ec.edu.ups.SistemaEducativo1.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,7 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "TBL_Persona")
-public class Persona {
+public class Persona implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "per_cedula")
@@ -56,5 +62,9 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
+	public String toS() {
+		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", fechaNacimiento="
+				+ fechaNacimiento + "]";
+	}
 	
 }

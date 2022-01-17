@@ -7,5 +7,6 @@ import ec.edu.ups.SistemaEducativo1.model.Asignatura;
 public interface AsignaturaONLocal {
 	
 	public void crearAsignatura(Asignatura a) throws Exception;
+	public Asignatura obtenerAsignatura(int codigo) throws Exception;
 	
 }
