@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+       <h:head>
+      
+      	<f:metadata>
+      		<f:viewParam name="id" value="#{alumnoBean.codigoEstudiante}"></f:viewParam>
+      		<f:viewAction action="#{alumnoBean.loadData()}"/>
+      	</f:metadata>
+      
+      </h:head>
+
+
+    	<div class="card-body">
+                  <h4 class="card-title">Formulario de registro</h4>
+                  
+                  <h:form class="forms-sample">
+                    <div class="form-group">
+                      <label for="txtId">Codigo del Estudiante</label>
+                      
+                      <h:inputText class="form-control" id="txtId" 
+                      			value="#{alumnoBean.alumno.id}" placeholder="Name">
+                     	<f:ajax execute="txtId" 
+                     			render="txtNombre txtDireccion"
+                     			listener="#{alumnoBean.loadDataEditar()}"/>
+                      </h:inputText>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="txtCedula">Cedula</label>
+                      <h:inputText class="form-control" id="txtCedula" value="#{alumnoBean.alumno.datos.cedula}" />
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="txtNombre">Nombre</label>
+                      <h:inputText class="form-control" id="txtNombre" value="#{alumnoBean.alumno.datos.nombre}" />
+                    </div>
+                    <div class="form-group">
+                      <label for="txtDireccion">Direccion</label>
+                      <h:inputText value="#{alumnoBean.alumno.datos.direccion}" class="form-control" id="txtDireccion" />
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="txtDireccion">Fecha de Nacimiento</label>
+                      <h:inputText value="#{alumnoBean.alumno.datos.fechaNacimiento}" class="form-control" id="txtFechaNacimiento" type="Date" />
+                    </div>
+                    
+               
+                    <h:commandButton action="#{alumnoBean.guardar()}" value="Guardar"  class="btn btn-primary mr-2" />
+                    <button class="btn btn-light">Guardar</button>
+                  </h:form>
+                </div>
+    
+
+
+</html>
