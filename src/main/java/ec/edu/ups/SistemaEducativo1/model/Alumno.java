@@ -17,16 +17,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "TBL_Alumno")
-public class Alumno implements Serializable {
+public class Alumno extends Persona implements Serializable{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name = "alu_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	
 	@Column(name = "alu_fechaInscripcion")
 	private Date fechaInscripcion;
@@ -40,18 +36,6 @@ public class Alumno implements Serializable {
 	
 	@Column(name = "alu_horario")
 	private ArrayList<String> horario;
-	
-	@OneToOne
-	@JoinColumn(name = "per_id")
-	private Persona datos;
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public Date getFechaInscripcion() {
 		return fechaInscripcion;
@@ -84,18 +68,10 @@ public class Alumno implements Serializable {
 	public void setHorario(ArrayList<String> horario) {
 		this.horario = horario;
 	}
-	
-	public Persona getDatos() {
-		return datos;
-	}
-
-	public void setDatos(Persona datos) {
-		this.datos = datos;
-	}
 
 	@Override
 	public String toString() {
-		return datos.toS()+"Alumno [id=" + id + ", fechaInscripcion=" + fechaInscripcion + ", solicitudes=" + solicitudes
+		return this.toS()+"Alumno  fechaInscripcion=" + fechaInscripcion + ", solicitudes=" + solicitudes
 				+ ", asignaturas=" + asignaturas + ", horario=" + horario + "]";
 	}
 	

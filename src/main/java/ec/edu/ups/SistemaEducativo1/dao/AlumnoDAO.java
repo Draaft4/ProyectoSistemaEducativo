@@ -26,7 +26,7 @@ public class AlumnoDAO {
 		throw new Exception("Se ha actualizado correctamente");
 	}
 	
-	public Alumno read(int id) {
+	public Alumno read(String id) {
 		Alumno alumno = em.find(Alumno.class, id);
 		return alumno;
 	}
@@ -40,7 +40,7 @@ public class AlumnoDAO {
 	public List<Alumno> getList(){
 		List<Alumno> listado = new ArrayList<Alumno>();
 		
-		String jpql = "SELECT op FROM Persona op";
+		String jpql = "SELECT op FROM Alumno op";
 		
 		Query query = em.createQuery(jpql, Alumno.class); 
 	

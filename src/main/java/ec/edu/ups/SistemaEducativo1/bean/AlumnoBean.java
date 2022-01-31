@@ -17,7 +17,7 @@ public class AlumnoBean {
 	@Inject
 	private AlumnoONLocal alumnoON;
 	
-	private int codigoEstudiante;
+	private String codigoEstudiante;
 	
 	private Alumno alumno  = new Alumno();
 	
@@ -32,11 +32,11 @@ public class AlumnoBean {
 		
 	}
 
-	public int getCodigoEstudiante() {
+	public String getCodigoEstudiante() {
 		return codigoEstudiante;
 	}
 
-	public void setCodigoEstudiante(int codigoEstudiante) {
+	public void setCodigoEstudiante(String codigoEstudiante) {
 		this.codigoEstudiante = codigoEstudiante;
 	}
 
@@ -59,7 +59,7 @@ public class AlumnoBean {
 	}
 
 	public void loadData() {
-		if(codigoEstudiante==0)
+		if(codigoEstudiante.equals(""))
 			return;
 		
 		Alumno alu;
@@ -77,7 +77,7 @@ public class AlumnoBean {
 	public void loadDataEditar() {
 		Alumno alu;
 		try {
-			alu = alumnoON.obtenerAlumno(alumno.getId());
+			alu = alumnoON.obtenerAlumno(alumno.getCedula());
 			alumno = alu;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -88,7 +88,7 @@ public class AlumnoBean {
 	
 	public String guardar() {
 		
-		System.out.println("Guaradndo " + this.alumno.getDatos().getNombre());
+		System.out.println("Guaradndo " + this.alumno.getNombre());
 	
 		
 		try {

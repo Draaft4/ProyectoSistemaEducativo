@@ -25,7 +25,7 @@ public class PruebasUnitarias {
 		ArrayList<Solicitudes> solicitudes = new ArrayList<Solicitudes>();
 		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 		ArrayList<String> horarios = new ArrayList<String>();
-		alumno.setId(0);
+		alumno.setCedula("0");
 //		alumno.setCedula("0101010101");
 //		alumno.setDireccion("Avenida España");
 //		alumno.setFechaInscripcion(d);
