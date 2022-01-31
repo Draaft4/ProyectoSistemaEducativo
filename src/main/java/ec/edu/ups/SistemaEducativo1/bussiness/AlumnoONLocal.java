@@ -11,8 +11,9 @@ public interface AlumnoONLocal {
 	
 	public void crearAlumno(Alumno a) throws Exception;
 	
-	public Alumno obtenerAlumno(String id) throws Exception;
+	public Alumno obtenerAlumno(String id);
 	
 	public List<Alumno> getAlumnos();
 	
+	public void actualiarAlumno(Alumno a) throws Exception;
 }

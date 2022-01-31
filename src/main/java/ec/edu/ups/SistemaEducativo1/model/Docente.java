@@ -1,18 +1,19 @@
 package ec.edu.ups.SistemaEducativo1.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 @Entity
 public class Docente extends Persona {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "doc_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

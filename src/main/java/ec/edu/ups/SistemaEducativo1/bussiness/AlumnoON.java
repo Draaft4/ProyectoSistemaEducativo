@@ -18,12 +18,16 @@ public class AlumnoON implements AlumnoONLocal,AlumnoONRemote{
 		dao.insert(a);
 	}
 	
-	public Alumno obtenerAlumno(String id) throws Exception{
+	public Alumno obtenerAlumno(String id) {
 		return dao.read(id);
 	}
 	
 	public List<Alumno> getAlumnos(){
 		return dao.getList();
+	}
+	
+	public void actualiarAlumno(Alumno a) throws Exception{
+		dao.update(a);
 	}
 	 
 }
