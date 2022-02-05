@@ -1,5 +1,7 @@
 package ec.edu.ups.SistemaEducativo1.bussiness;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import ec.edu.ups.SistemaEducativo1.model.Docente;
@@ -8,5 +10,7 @@ import ec.edu.ups.SistemaEducativo1.model.Docente;
 public interface DocenteONLocal {
 	
 	public void crearDocente(Docente d) throws Exception;
+	
+	public List<Docente> listarDocente();
 	
 }

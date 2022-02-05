@@ -29,6 +29,12 @@ public class Persona implements Serializable{
 	
 	@Column(name = "per_fechaNacimiento")
 	private Date fechaNacimiento;
+	
+	@Column(name = "per_correo")
+	private String correo;
+	
+	@Column(name = "per_contraseña")
+	private String contraseña;
 
 	public String getCedula() {
 		return cedula;
@@ -62,9 +68,24 @@ public class Persona implements Serializable{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
-	public String toS() {
-		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 	
+	public String toS() {
+		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", direccion=" + direccion + ", fechaNacimiento="
+				+ fechaNacimiento + ", correo=" + correo + ", contraseña=" + contraseña + "]";
+	}
 }

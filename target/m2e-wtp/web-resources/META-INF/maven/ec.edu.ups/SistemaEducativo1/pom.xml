@@ -178,6 +178,14 @@
 			<artifactId>wildfly-naming</artifactId>
 			<version>24.0.1.Final</version>
 		</dependency>
+		
+		<dependency>
+         <groupId>com.sun.xml.ws</groupId>
+         <artifactId>jaxws-rt</artifactId>
+         <version>2.2.5</version>
+         <scope>compile</scope>
+      </dependency>
+		
     </dependencies>
     
     

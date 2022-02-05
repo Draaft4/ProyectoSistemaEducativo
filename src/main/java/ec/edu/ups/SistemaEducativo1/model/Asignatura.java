@@ -29,6 +29,9 @@ public class Asignatura implements Serializable {
 	@Column(name = "asig_numHoras")
 	private int numHoras;
 	
+	@Column(name="asig_espacioFisico")
+	private String espacioFisico;
+	
 	@Column(name = "asig_asignatura")
 	private String nombreAsignatura;
 	
@@ -90,12 +93,19 @@ public class Asignatura implements Serializable {
 		this.contenido = contenido;
 	}
 
-	
+	public String getEspacioFisico() {
+		return espacioFisico;
+	}
+
+	public void setEspacioFisico(String espacioFisico) {
+		this.espacioFisico = espacioFisico;
+	}
+
 	@Override
 	public String toString() {
-		return "Asignatura [codigo=" + codigo + ", numHoras=" + numHoras + ", nombreAsignatura=" + nombreAsignatura+ "]";
+		return "Asignatura [codigo=" + codigo + ", numHoras=" + numHoras + ", espacioFisico=" + espacioFisico
+				+ ", nombreAsignatura=" + nombreAsignatura + ", docente=" + docente + ", calificaciones="
+				+ calificaciones + ", contenido=" + contenido + "]";
 	}
-	
-	
 	
 }

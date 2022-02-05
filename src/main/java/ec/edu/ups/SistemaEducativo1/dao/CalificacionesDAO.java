@@ -1,8 +1,12 @@
 package ec.edu.ups.SistemaEducativo1.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import ec.edu.ups.SistemaEducativo1.model.Calificaciones;
 
@@ -33,4 +37,18 @@ public class CalificacionesDAO {
 		em.remove(cali);
 		throw new Exception("Se ha eliminado correctamente");
 	}
+	
+	public List<Calificaciones> getList(){
+		List<Calificaciones> listado = new ArrayList<Calificaciones>();
+		
+		String jpql = "SELECT op FROM Calificaciones op";
+		
+		Query query = em.createQuery(jpql, Calificaciones.class); 
+	
+		listado = query.getResultList();
+		
+		return listado;
+	}
+	
+	
 }

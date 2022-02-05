@@ -1,5 +1,7 @@
 package ec.edu.ups.SistemaEducativo1.bussiness;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -14,6 +16,10 @@ public class DocenteON implements DocenteONLocal,DocenteONRemote{
 	
 	public void crearDocente(Docente d) throws Exception {
 		dao.insert(d);
+	}
+	
+	public List<Docente> listarDocente() {
+		return dao.getList();
 	}
 	
 }
