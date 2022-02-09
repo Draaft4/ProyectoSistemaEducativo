@@ -28,7 +28,7 @@ public class TestAlumno extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		Alumno test = new Alumno();
 		test.setCedula("0101");
-		test.setContraseña("123");
+		test.setContrasena("123");
 		test.setCorreo("test");
 		test.setDireccion("Av Test");
 		test.setNombre("Test");

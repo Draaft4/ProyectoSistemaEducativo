@@ -35,7 +35,7 @@ public class LoginServicesRestful {
 			if(!alumno.getCorreo().equals(login.getUser())) {
 				respuesta="{\"response\":\"Error: no existe el correo indicado.\"}";
 			}else {
-				if(!alumno.getContraseña().equals(login.getPass())) {
+				if(!alumno.getContrasena().equals(login.getPass())) {
 					respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
 				}else {
 					respuesta="{\"response\":\"OK.\"}";
@@ -46,7 +46,7 @@ public class LoginServicesRestful {
 			if(!docente.getCorreo().equals(login.getUser())) {
 				respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
 			}else {
-				if(!docente.getContraseña().equals(login.getPass())) {
+				if(!docente.getContrasena().equals(login.getPass())) {
 					respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
 				}else {
 					respuesta="{\"response\":\"OK.\"}";

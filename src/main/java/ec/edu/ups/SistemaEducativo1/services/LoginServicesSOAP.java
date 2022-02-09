@@ -32,7 +32,7 @@ public class LoginServicesSOAP {
 			if(!alumno.getCorreo().equals(login.getUser())) {
 				respuesta="Error: no existe el correo indicado.";
 			}else {
-				if(!alumno.getContraseña().equals(login.getPass())) {
+				if(!alumno.getContrasena().equals(login.getPass())) {
 					respuesta="Error: la contraseña es incorrecta.";
 				}else {
 					respuesta="OK.";
@@ -43,7 +43,7 @@ public class LoginServicesSOAP {
 			if(!docente.getCorreo().equals(login.getUser())) {
 				respuesta="Error: no existe el correo indicado.";
 			}else {
-				if(!docente.getContraseña().equals(login.getPass())) {
+				if(!docente.getContrasena().equals(login.getPass())) {
 					respuesta="Error: la contraseña es incorrecta.";
 				}else {
 					respuesta="OK.";
