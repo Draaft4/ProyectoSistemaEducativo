@@ -36,7 +36,20 @@ public class AlumnoServiceRestful {
 		}
 		return null;
 	}
-
+	
+	@GET
+	@Path("get")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Alumno getAlumno(@QueryParam("usuario")String usuario) {
+		List<Alumno> listaA = dao.getAlumnos();
+		for(Alumno alumno: listaA) {
+			if(alumno.getCorreo().equals(usuario)) {
+				return alumno;
+			}
+		}
+		return new Alumno();
+	}
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Alumno> listarAlumnos() {
