@@ -100,4 +100,9 @@ public class AlumnoServicesSOAP {
 		}
 	}
 	
+	@WebMethod
+	public Alumno obtenerAlumno(String cedula) {
+		return dao.obtenerAlumno(cedula);
+	}
+	
 }

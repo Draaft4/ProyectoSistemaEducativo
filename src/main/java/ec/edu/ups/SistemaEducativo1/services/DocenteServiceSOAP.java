@@ -74,4 +74,10 @@ public class DocenteServiceSOAP {
 		}
 	}
 	
+	
+	@WebMethod
+	public Docente obtenerDocente(String cedula) {
+		return dao.getDocente(cedula);
+	}
+	
 }

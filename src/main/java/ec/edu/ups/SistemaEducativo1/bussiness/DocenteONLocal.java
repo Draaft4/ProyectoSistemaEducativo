@@ -13,4 +13,6 @@ public interface DocenteONLocal {
 	
 	public List<Docente> listarDocente();
 	
+	public Docente getDocente(String cedula);
+	
 }

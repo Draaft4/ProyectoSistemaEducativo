@@ -22,4 +22,8 @@ public class DocenteON implements DocenteONLocal,DocenteONRemote{
 		return dao.getList();
 	}
 	
+	public Docente getDocente(String cedula) {
+		return dao.read(cedula);
+	}
+	
 }

@@ -13,4 +13,6 @@ public interface DocenteONRemote {
 	
 	public List<Docente> listarDocente();
 	
+	public Docente getDocente(String cedula);
+	
 }
