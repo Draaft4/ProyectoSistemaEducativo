@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calificacion</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloIngresarCalificaciones.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<div class="login">
+    <div class="login-header">
+        <h1>Ingresar Calificaciones</h1>
+    </div>
+    <div class="login-form">
+
+        <body>
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+            
+            <br>
+           
+                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /> 
+                    <input type="submit" id="buscar" name="buscar" value="Buscar" /></h3>
+                
+                <span id="mensajeCedula" class="error"></span>
+               
+                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+            
+                
+                <span id="mensajeNombres" class="error"></span>
+                
+                <br>
+
+                <h3 for="asig">Asignatura (*):
+                    <select id="asignatura" name="asignatura">
+                        <option value=""></option>
+                        <option type="text" value="estudiante">Estudiante</option>
+                      </select>
+                </h3>
+                <br>
+                <h3 for="nombres">Ingre Calificacion (*):  <input type="text" id="nombres" placeholder="Ingrese la calificacion ..." name="nombres" value=""   /></h3>
+
+                <br>
+                
+               
+                  <br>
+
+                  <input type="submit" id="aceptar" name="aceptar" value="Aceptar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+            </form>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+</body>
+
+</html>

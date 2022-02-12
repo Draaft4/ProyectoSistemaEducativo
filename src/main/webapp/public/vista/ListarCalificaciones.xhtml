@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listas Calificaciones</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloListaCalificaciones.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<div class="login">
+    <div class="login-header">
+        <h1>Lista de Calificaciones</h1>
+    </div>
+    <div class="login-form">
+
+        <body>
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+            
+            <br>
+
+                <h3 for="asig">Elegir Asignaturas (*):
+                    <select id="asignatura" name="asignatura">
+                        <option value=""></option>
+                        <option type="text" value="estudiante">Estudiante</option>
+                      </select>
+                </h3>
+                <br>
+                
+
+                <br>
+                
+                <table >
+                    <tr>
+                      <th>Nota Parcial</th>
+                      
+                    </tr>
+                    <tr>
+                      <td></td>
+                      
+                    </tr>
+                  
+                  </table>
+                  <br>
+                  <br>
+                  <h3 for="notaTotal">Nota Total (*):  <input type="text" id="notaTotal" name="notaTotal" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+                  
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+            </form>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+</body>
+
+</html>

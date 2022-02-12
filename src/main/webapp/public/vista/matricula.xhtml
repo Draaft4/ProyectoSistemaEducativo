@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matricular</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloMatricula.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<div class="login">
+    <div class="login-header">
+        <h1>Matricula</h1>
+    </div>
+    <div class="login-form">
+
+        <body>
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+            
+            <br>
+           
+                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /> 
+                    <input type="submit" id="buscar" name="buscar" value="Buscar" /></h3>
+                
+                <span id="mensajeCedula" class="error"></span>
+               
+                <br>
+                <h3 for="fecha">Fecha Inscripcion (*):  <input type="date" id="fechaInscripcion" name="fechaInscripcion" value="" placeholder="Ingrese su fecha de Inscripcion ..." /></h3>
+               
+                <br>
+                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+               
+                <span id="mensajeNombres" class="error"></span>
+                
+                <br>
+
+                <h3 for="asig">Asignatura (*):
+                    <select id="asignatura" name="asignatura">
+                        <option value=""></option>
+                        <option type="text" value="estudiante">Estudiante</option>
+                      </select>
+                </h3>
+                <br>
+                
+
+                <br>
+                
+                <table >
+                    <tr>
+                      <th>Codigo</th>
+                      <th>Nombre</th>
+                      <th>Docente</th>
+                      <th>Numero de Horas</th>
+                      <th>Aula</th>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  
+                  </table>
+                  <br>
+                  <br>
+
+                  <input type="submit" id="agregar" name="agregar" value="Agregar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+                <input type="submit" id="matricular" name="matricular" value="Matricular" />
+            </form>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+</body>
+
+</html>

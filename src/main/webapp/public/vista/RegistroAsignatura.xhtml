@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Asignatura</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloPrueba.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <div class="login-header">
+        <h1>Registro de Asignatura</h1>
+    </div>
+
+        
+            <div class="login-form">
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+           
+            <br>
+           
+                <h3 for="nombreMateria">Nombre Materia (*):  <input type="text" id="nombreMateria" name="nombreMateria" value="" placeholder="Ingrese el número de la Materia ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /></h3>
+                
+               
+                <br>
+                <h3 for="numeroHoras">Numero Horas (*):  <input type="text" id="numeroHoras" name="numeroHoras" value="" placeholder="Ingrese el numero de Horas ..." onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+               
+                
+                
+                <br>
+                <h3 for="aula">Asignar Aula (*) <input type="text" id="aula" name="aula" value="" placeholder="Ingrese la aula ..." /></h3>
+
+                <br>
+                
+                
+                
+            </form>
+
+        </div>
+
+
+        <div class="login-form1">
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+            <br>
+           
+                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" />
+                    <input type="submit" id="buscar" name="buscar" value="Buscar" />
+                </h3>
+                
+               
+                <br>
+                <h3 for="nombreProfesor">Nombre Profesor (*):  <input type="text" id="nombreProfesor" name="nombreProfesor" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+               
+               
+            </form>
+
+
+        </div>
+
+        
+</div>
+
+<input type="submit" id="crear" name="crear" value="Registrar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+
+</body>
+
+</html>

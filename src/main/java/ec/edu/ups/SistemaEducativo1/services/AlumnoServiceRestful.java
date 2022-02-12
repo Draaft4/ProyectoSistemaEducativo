@@ -13,8 +13,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ec.edu.ups.SistemaEducativo1.bussiness.AlumnoONLocal;
+import ec.edu.ups.SistemaEducativo1.bussiness.AsignaturaONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.SolicitudesONLocal;
 import ec.edu.ups.SistemaEducativo1.model.Alumno;
+import ec.edu.ups.SistemaEducativo1.model.Asignatura;
 import ec.edu.ups.SistemaEducativo1.model.Solicitudes;
 
 @Path("alumno")
@@ -24,6 +26,10 @@ public class AlumnoServiceRestful {
 	private AlumnoONLocal dao;
 	@Inject
 	private SolicitudesONLocal daoSolicitudes;
+
+	@Inject
+	private AsignaturaONLocal daoAsignaturas;
+
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
@@ -51,6 +57,7 @@ public class AlumnoServiceRestful {
 	}
 	
 	@GET
+	@Path("list")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Alumno> listarAlumnos() {
 		return dao.getAlumnos();
@@ -85,6 +92,32 @@ public class AlumnoServiceRestful {
 		} else {
 			return "No se ha encontrado el alumno";
 		}
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Alumno obtenerAlumno(@QueryParam("cedula")String cedula) {
+		return dao.obtenerAlumno(cedula);
+	}
+	
+	@GET
+	@Path("asignaturas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Asignatura> getListaAsignaturas(){
+		return daoAsignaturas.getList();
+	}
+
+	@PUT
+	@Path("asignaturas")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String actualizarAlumno(Alumno asg) {
+		 try {
+			dao.actualiarAlumno(asg);
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+		 return "";
 	}
 
 }

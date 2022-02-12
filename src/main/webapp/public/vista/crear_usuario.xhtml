@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloCrear.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<div class="login">
+    <div class="login-header">
+        <h1>Registro</h1>
+    </div>
+    <div class="login-form">
+
+        <body>
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+            <h3 for="tipo">Seleccione Estudiante o Profesor (*):
+            <select id="estprofe" name="estprofe">
+                <option value=""></option>
+                <option type="text" value="estudiante">Estudiante</option>
+                <option type="text" value="profesor">Profesor</option>
+              </select>
+            </h3>
+            <br>
+           
+                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /></h3>
+                <span id="mensajeCedula" class="error"></span>
+               
+                <br>
+                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres completos ..." onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
+               
+                <span id="mensajeNombres" class="error"></span>
+                
+                <br>
+                <h3 for="direccion">Dirección (*) <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección ..." /></h3>
+
+                <br>
+                <h3 for="titulo">Titulo (*): <input type="text" id="titulo" name="titulo" value="" placeholder="Ingrese su Titulo ..." /></h3>
+                
+                <br>
+                <h3 for="fecha">Fecha Nacimiento (*):  <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento ..." /></h3>
+               
+                <span id="mensajeFecha" class="error"></span>
+                <br>
+                <h3 for="correo">Correo electrónico (*):  <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico ..." onkeyup="return validarCorreo(this)" /></h3>
+               
+                <span id="mensajeCorreo" class="error"></span>
+                <br>
+
+                <h3 for="correo">Contraseña (*):  <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." onkeyup="return validarContrasena(this)" /></h3>
+               
+                <span id="mensajeContrasena" class="error"></span>
+                <br>
+                <input type="submit" id="crear" name="crear" value="Registrar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+            </form>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+</body>
+
+</html>

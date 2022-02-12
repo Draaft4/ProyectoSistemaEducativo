@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitar</title>
+    <script type="text/javascript" src="validaciones_usuario.js"></script>
+    <link href="../controladores/estiloSolicitud.css" rel="stylesheet" />
+    <style type="text/css">
+        .error {
+            color: rgb(255, 230, 0);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<div class="login">
+    <div class="login-header">
+        <h1>Solicitud</h1>
+    </div>
+    <div class="login-form">
+
+        <body>
+            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            
+                
+                <h3 for="contenido">Contenido (*): </h3>
+                <p><textarea type="text" name="comentario" rows="30" cols="80"></textarea></p>
+                
+                
+
+                  <input type="submit" id="solicitar" name="solicitar" value="Solicitar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+            </form>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+</body>
+
+</html>

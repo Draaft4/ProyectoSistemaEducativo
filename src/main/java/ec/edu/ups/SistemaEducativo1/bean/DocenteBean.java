@@ -1,18 +1,11 @@
-package ec.edu.ups.SistemaEducativo1.services;
+package ec.edu.ups.SistemaEducativo1.bean;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
+import javax.inject.Named;
 
 import ec.edu.ups.SistemaEducativo1.bussiness.AlumnoONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.AsignaturaONLocal;
@@ -23,9 +16,10 @@ import ec.edu.ups.SistemaEducativo1.model.Asignatura;
 import ec.edu.ups.SistemaEducativo1.model.Calificaciones;
 import ec.edu.ups.SistemaEducativo1.model.Docente;
 
-@Path("docente")
-public class DocenteServiceRestful {
-	
+@Named
+@RequestScoped
+public class DocenteBean {
+
 	@Inject
 	private DocenteONLocal dao;
 	@Inject
@@ -35,10 +29,6 @@ public class DocenteServiceRestful {
 	@Inject
 	private AsignaturaONLocal daoAsignatura;
 	
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
 	public String crearDocente(Docente docente) {
 		try {
 			dao.crearDocente(docente);
@@ -48,18 +38,11 @@ public class DocenteServiceRestful {
 		return "";
 	}
 	
-	@GET
-	@Path("list")
-	@Produces(MediaType.APPLICATION_JSON)
 	public List<Docente> listarDocentes() {
 		return dao.listarDocente();
 	}
 	
-	@PUT
-	@Path("calificaciones")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String agregarCalificacion(@QueryParam("cedula") String cedulaEstudiante,
-			@QueryParam("asignatura") int codAsignatura, @QueryParam("calificacion") int nota) {
+	public String agregarCalificacion(String cedulaEstudiante,int codAsignatura, int nota) {
 		Calificaciones calificacion = new Calificaciones();
 		Alumno alumno = daoEstudiantes.obtenerAlumno(cedulaEstudiante);
 		if (alumno != null) {
@@ -90,23 +73,17 @@ public class DocenteServiceRestful {
 		}
 	}
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Docente obtenerDocente(@QueryParam("cedula")String cedula) {
+	public Docente obtenerDocente(String cedula) {
 		return dao.getDocente(cedula);
 	}
 	
-	@POST
-	@Path("asignatura")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public String crearAsignatura(Asignatura asignatura){
 		try {
 			daoAsignatura.crearAsignatura(asignatura);
 		} catch (Exception e) {
 			return e.getMessage();
 		}
-		return "";
+		return "e";
 	}
 	
 	
