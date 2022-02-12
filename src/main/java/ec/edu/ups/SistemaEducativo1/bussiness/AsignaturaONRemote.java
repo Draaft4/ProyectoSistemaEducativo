@@ -1,5 +1,7 @@
 package ec.edu.ups.SistemaEducativo1.bussiness;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 import ec.edu.ups.SistemaEducativo1.model.Asignatura;
@@ -11,4 +13,5 @@ public interface AsignaturaONRemote {
 	
 	public Asignatura obtenerAsignatura(int codigo) throws Exception;
 	
+	public List<Asignatura> getList();
 }

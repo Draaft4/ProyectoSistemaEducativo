@@ -8,6 +8,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import ec.edu.ups.SistemaEducativo1.bussiness.AlumnoONLocal;
+import ec.edu.ups.SistemaEducativo1.bussiness.AsignaturaONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.CalificacionesONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.DocenteONLocal;
 import ec.edu.ups.SistemaEducativo1.model.Alumno;
@@ -26,6 +27,8 @@ public class DocenteServiceSOAP {
 	private AlumnoONLocal daoEstudiantes;
 	@Inject
 	private CalificacionesONLocal daoCalifiaciones;
+	@Inject
+	private AsignaturaONLocal daoAsignatura;
 	
 	@WebMethod
 	public String crearDocente(Docente docente) {
@@ -78,6 +81,16 @@ public class DocenteServiceSOAP {
 	@WebMethod
 	public Docente obtenerDocente(String cedula) {
 		return dao.getDocente(cedula);
+	}
+	
+	@WebMethod
+	public String crearAsignatura(Asignatura asignatura){
+		try {
+			daoAsignatura.crearAsignatura(asignatura);
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+		return "e";
 	}
 	
 }

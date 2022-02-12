@@ -1,5 +1,7 @@
 package ec.edu.ups.SistemaEducativo1.bussiness;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -18,6 +20,10 @@ public class AsignaturaON implements AsignaturaONLocal,AsignaturaONRemote{
 	
 	public Asignatura obtenerAsignatura(int codigo) throws Exception{
 		return dao.read(codigo);
+	}
+	
+	public List<Asignatura> getList(){
+		return dao.getList();
 	}
 	
 }
