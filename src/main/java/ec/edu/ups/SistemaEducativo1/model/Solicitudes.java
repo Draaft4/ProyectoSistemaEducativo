@@ -7,11 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name= "TBL_Solicitudes")
 public class Solicitudes implements Serializable{
+
+	@Override
+	public String toString() {
+		return "Solicitudes [id=" + id + ", contenido=" + contenido + ", destinatario=" + destinatario + "]";
+	}
 
 	/**
 	 * 
@@ -25,6 +31,10 @@ public class Solicitudes implements Serializable{
 	
 	@Column(name = "soli_contenido")
 	private String contenido;
+	
+	@JoinColumn(name = "doc_id")
+	@Column(name="soli_des")
+	private Docente destinatario;
 
 	public int getId() {
 		return id;
@@ -40,6 +50,14 @@ public class Solicitudes implements Serializable{
 
 	public void setContenido(String contenido) {
 		this.contenido = contenido;
+	}
+
+	public Docente getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Docente destinatario) {
+		this.destinatario = destinatario;
 	}
 	
 	

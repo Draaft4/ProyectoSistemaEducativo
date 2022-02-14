@@ -70,7 +70,7 @@
 			<center>
 				<c:choose>
 					<c:when test="#{loginBean.sesion}">
-						<a href="InformacionUsuario.xhtml"><img src="4.png"
+						<a href="InformacionUsuario.xhtml?faces-redirect=true&amp;cedula=#{loginBean.cedula}"><img src="4.png"
 							height="80" width="100" /></a>
 					</c:when>
 					<c:otherwise>
@@ -119,7 +119,7 @@
 		<center>
 			<c:choose>
 				<c:when test="#{loginBean.sesion}">
-					<a href="IngresarCalificaciones.xhtml"><img src="8.png"
+					<a href="ListarCalificaciones.xhtml"><img src="8.png"
 						height="80" width="100" /></a>
 				</c:when>
 				<c:otherwise>
@@ -141,23 +141,15 @@
 
 	<div class="login-form5">
 		<center>
-			<c:choose>
-				<c:when test="#{loginBean.sesion}">
-					<a href="RegistroAsignatura.xhtml"><img src="5.png" height="80"
-						width="100" /></a>
-				</c:when>
-				<c:otherwise>
-					<button ondblclick="myalert()">
+			<button ondblclick="myalert()">
 						<img src="5.png" height="80" width="100" />
 					</button>
 
 					<script>
 				        function myalert() {
-				            alert("Error: Por favor inicie sesion.");
+				            alert("Solo docentes pueden crear asignaturas");
 				        }
     				</script>
-				</c:otherwise>
-			</c:choose>
 		</center>
 		<h3 for="direccion">Registro Asignaturas</h3>
 	</div>

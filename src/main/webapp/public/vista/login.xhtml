@@ -1,32 +1,37 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
 
 <head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesión</title>
+   
+    <ui:define name="title">Iniciar Sesion</ui:define>
     <link href="../controladores/estiloLogin.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+   
 </head>
 
-<body>
+
     <div class="login">
         <div class="login-header">
             <h1>Iniciar Sesión</h1>
         </div>
         <div class="login-form">
-            <form id="formulario01" method="POST" action="../controladores/login.php">
+            <h:form id="formulario01" class="forms-sample">
                 <h3 for="correo">Correo:</h3>
-                <input type="text" id="correo" name="correo" value="" placeholder="Ingrese el correo ..." />
+                <h:inputText  value="#{loginBean.login.user}" placeholder="Ingrese el correo ..." />
                 <h3 for="nombres">Contraseña:</h3>
-                <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." />
-                <br>
-                <input type="submit" id="login" name="login" value="Iniciar Sesión" />
-                <br>
-                <a class="sign-up" href="crear_usuario.html">Registrase</a>
-                <br>
-
+                <h:inputSecret  value="#{loginBean.login.pass}" placeholder="Ingrese su contraseña ..." />
+                <br></br>
+                <h:commandButton action="#{loginBean.iniciarSesion()}" id="login" name="login" value="Iniciar Sesión"  class="btn btn-primary mr-2"/>
+                <br></br>
+                <a class="sign-up" href="crear_usuario.xhtml">Registrase</a>
+                <br></br>
+			</h:form>
         </div>
     </div>
 
-</body>
+
 
 </html>

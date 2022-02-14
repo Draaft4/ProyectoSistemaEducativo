@@ -11,10 +11,12 @@ import ec.edu.ups.SistemaEducativo1.bussiness.AlumnoONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.AsignaturaONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.CalificacionesONLocal;
 import ec.edu.ups.SistemaEducativo1.bussiness.DocenteONLocal;
+import ec.edu.ups.SistemaEducativo1.bussiness.SolicitudesONLocal;
 import ec.edu.ups.SistemaEducativo1.model.Alumno;
 import ec.edu.ups.SistemaEducativo1.model.Asignatura;
 import ec.edu.ups.SistemaEducativo1.model.Calificaciones;
 import ec.edu.ups.SistemaEducativo1.model.Docente;
+import ec.edu.ups.SistemaEducativo1.model.Solicitudes;
 
 @Named
 @RequestScoped
@@ -28,23 +30,117 @@ public class DocenteBean {
 	private CalificacionesONLocal daoCalifiaciones;
 	@Inject
 	private AsignaturaONLocal daoAsignatura;
+	@Inject
+	private SolicitudesONLocal daoSolicitudes;
+
+	/*
+	 * Creacion variables de JSF
+	 */
+
+	private Docente docente = new Docente();
+
+	private List<Docente> lista = new ArrayList<Docente>();
+
+	private String mensaje = "";
+
+	private Asignatura asignatura = new Asignatura();
+
+	private String cedEstudiante = "";
+
+	private int codAsignatura = 0;
+
+	private int nota = 0;
 	
-	public String crearDocente(Docente docente) {
+	private List<Solicitudes> list = new ArrayList<Solicitudes>();
+	
+
+	/*
+	 * Setters y Getters
+	 */
+
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+
+	public List<Solicitudes> getList() {
+		return list;
+	}
+
+	public void setList(List<Solicitudes> list) {
+		this.list = list;
+	}
+
+	public String getCedEstudiante() {
+		return cedEstudiante;
+	}
+
+	public void setCedEstudiante(String cedEstudiante) {
+		this.cedEstudiante = cedEstudiante;
+	}
+
+	public int getCodAsignatura() {
+		return codAsignatura;
+	}
+
+	public void setCodAsignatura(int codAsignatura) {
+		this.codAsignatura = codAsignatura;
+	}
+
+	public int getNota() {
+		return nota;
+	}
+
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
+
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
+	}
+
+	public Docente getDocente() {
+		return docente;
+	}
+
+	public void setDocente(Docente docente) {
+		this.docente = docente;
+	}
+
+	public List<Docente> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Docente> lista) {
+		this.lista = lista;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	/*
+	 * 
+	 */
+
+	public void crearDocente() {
 		try {
 			dao.crearDocente(docente);
-		}catch(Exception e) {
-			return e.getMessage();
+		} catch (Exception e) {
+			mensaje = e.getMessage();
 		}
-		return "";
 	}
-	
-	public List<Docente> listarDocentes() {
-		return dao.listarDocente();
+
+	public void listarDocentes() {
+		lista = dao.listarDocente();
 	}
-	
-	public String agregarCalificacion(String cedulaEstudiante,int codAsignatura, int nota) {
+
+	public void agregarCalificacion() {
 		Calificaciones calificacion = new Calificaciones();
-		Alumno alumno = daoEstudiantes.obtenerAlumno(cedulaEstudiante);
+		Alumno alumno = daoEstudiantes.obtenerAlumno(cedEstudiante);
 		if (alumno != null) {
 			calificacion.setNotaParcial(nota);
 			try {
@@ -65,26 +161,42 @@ public class DocenteBean {
 			try {
 				daoEstudiantes.actualiarAlumno(alumno);
 			} catch (Exception e) {
-				return e.getMessage();
+				mensaje = e.getMessage();
 			}
-			return "";
 		} else {
-			return "No se ha encontrado el alumno";
+			mensaje = "No se ha encontrado el alumno";
 		}
 	}
-	
-	public Docente obtenerDocente(String cedula) {
-		return dao.getDocente(cedula);
+
+	public void obtenerDocente() {
+		docente = dao.getDocente(docente.getCedula());
 	}
-	
-	public String crearAsignatura(Asignatura asignatura){
+
+	public void crearAsignatura() {
 		try {
 			daoAsignatura.crearAsignatura(asignatura);
 		} catch (Exception e) {
-			return e.getMessage();
+			mensaje = e.getMessage();
 		}
-		return "e";
 	}
 	
+	public String buscarPorCedula() {
+		return "InformacionDocente?faces-redirect=true&cedula="+docente.getCedula();
+	}
 	
+	public String menu() {
+		return "MenuPrincipal?faces-redicrect=true";
+	}
+	
+	public void cargarsolicitudes() {
+		List<Solicitudes> a = daoSolicitudes.lista();
+		for(Solicitudes s: a) {
+			if(s.getDestinatario().getCedula().equals(docente.getCedula())){
+				list.add(s);
+			}
+		}
+		System.out.println(list.size());
+		
+	}
+
 }

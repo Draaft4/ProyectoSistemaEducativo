@@ -1,68 +1,76 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Calificacion</title>
-    <script type="text/javascript" src="validaciones_usuario.js"></script>
-    <link href="../controladores/estiloIngresarCalificaciones.css" rel="stylesheet" />
-    <style type="text/css">
-        .error {
-            color: rgb(255, 230, 0);
-            font-size: 16px;
-        }
-    </style>
-</head>
+<h:head>
+	<ui:define name="ingresaCalificaciones">Calificacion</ui:define>
+	<link href="../controladores/estiloIngresarCalificaciones.css"
+		rel="stylesheet" />
+	<style type="text/css">
+.error {
+	color: rgb(255, 230, 0);
+	font-size: 16px;
+}
+</style>
+</h:head>
 <div class="login">
-    <div class="login-header">
-        <h1>Ingresar Calificaciones</h1>
-    </div>
-    <div class="login-form">
+	<div class="login-header">
+		<h1>Ingresar Calificaciones</h1>
+	</div>
+	<div class="login-form">
+		<h:form>
+			<br></br>
+			<h3 for="cedula">
+				Cedula (*):
+				<h:inputText type="text" id="cedula" name="cedula"
+					value="#{alumnoBean.alumno.cedula}" maxlength="10" />
+				<h:commandButton action="#{alumnoBean.obtenerAlumno()}" id="buscar" name="buscar" value="Buscar"
+					class="btn btn-primary mr-2" />
+			</h3>
 
-        <body>
-            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
-            
-            
-            <br>
-           
-                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /> 
-                    <input type="submit" id="buscar" name="buscar" value="Buscar" /></h3>
-                
-                <span id="mensajeCedula" class="error"></span>
-               
-                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
-            
-                
-                <span id="mensajeNombres" class="error"></span>
-                
-                <br>
 
-                <h3 for="asig">Asignatura (*):
-                    <select id="asignatura" name="asignatura">
-                        <option value=""></option>
-                        <option type="text" value="estudiante">Estudiante</option>
-                      </select>
-                </h3>
-                <br>
-                <h3 for="nombres">Ingre Calificacion (*):  <input type="text" id="nombres" placeholder="Ingrese la calificacion ..." name="nombres" value=""   /></h3>
 
-                <br>
-                
-               
-                  <br>
+			<h3>
+				Nombre (*):
+				<h:inputText type="text" name="nombres"
+					value="#{alumnoBean.alumno.nombre}" />
+			</h3>
 
-                  <input type="submit" id="aceptar" name="aceptar" value="Aceptar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
-            </form>
 
-    </div>
+			<br></br>
+			<h3 for="asig">
+				Asignatura (*):
+				<h:inputText type="text" id="codAsg" name="codAsg"
+					value="#{alumnoBean.codAsignatura}"/>
+					<h:commandButton action="#{alumnoBean.seleccionadoP()}" id="buscar2" name="buscar2" value="Buscar"
+					class="btn btn-primary mr-2" />
+					<h:outputText value="#{alumnoBean.selecionado}" />
+			</h3>
+			<br></br>
+			<h3>
+				Ingre Calificacion (*):
+				<h:inputText type="text" id="nota" placeholder="Ingrese la calificacion ..."
+					name="nombres" value="#{alumnoBean.nota}" />
+			</h3>
 
-    
+			<br></br>
+			<br></br>
+			<h:commandButton type="summit" action="#{alumnoBean.agregarCalificacion()}"
+				id="aceptar" name="aceptar" value="Aceptar" class="btn btn-primary mr-2"  />
+			<h:commandButton action="MenuPrincipalDocente?faces-redirect=true&amp;sesion=true" id="cancelar" name="cancelar"
+				value="Cancelar" />
+		</h:form>
+	</div>
+
+
 
 </div>
 
 
 
 
-</body>
+
 
 </html>

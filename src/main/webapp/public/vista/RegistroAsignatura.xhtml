@@ -1,74 +1,103 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Registrar Asignatura</title>
-    <script type="text/javascript" src="validaciones_usuario.js"></script>
-    <link href="../controladores/estiloPrueba.css" rel="stylesheet" />
-    <style type="text/css">
-        .error {
-            color: rgb(255, 230, 0);
-            font-size: 16px;
-        }
-    </style>
-</head>
+
+<h:head>
+
+	<ui:define name="title">Registrar Asignatura</ui:define>
+	<link href="../controladores/estiloPrueba.css" rel="stylesheet" />
+	<style type="text/css">
+.error {
+	color: rgb(255, 230, 0);
+	font-size: 16px;
+}
+</style>
+</h:head>
 <body>
-<div class="login">
-    <div class="login-header">
-        <h1>Registro de Asignatura</h1>
-    </div>
+	<div class="login">
+		<div class="login-header">
+			<h1>Registro de Asignatura</h1>
+		</div>
 
-        
-            <div class="login-form">
-            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
-            
-           
-            <br>
-           
-                <h3 for="nombreMateria">Nombre Materia (*):  <input type="text" id="nombreMateria" name="nombreMateria" value="" placeholder="Ingrese el número de la Materia ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /></h3>
-                
-               
-                <br>
-                <h3 for="numeroHoras">Numero Horas (*):  <input type="text" id="numeroHoras" name="numeroHoras" value="" placeholder="Ingrese el numero de Horas ..." onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
-               
-                
-                
-                <br>
-                <h3 for="aula">Asignar Aula (*) <input type="text" id="aula" name="aula" value="" placeholder="Ingrese la aula ..." /></h3>
+		<div class="login-form1">
+			<h:form>
 
-                <br>
-                
-                
-                
-            </form>
-
-        </div>
+				<br></br>
+				<h3 for="cedula">
+					Cedula (*):
+					<h:inputText type="text" id="cedula" name="cedula"
+						value="#{docenteBean.docente.cedula}"
+						placeholder="Ingrese el número de cedula ..." maxlength="10" />
+					<h:commandButton action="#{docenteBean.obtenerDocente()}"
+						id="buscar" name="buscar" value="Buscar" />
+				</h3>
 
 
-        <div class="login-form1">
-            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
-            
-            <br>
-           
-                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" />
-                    <input type="submit" id="buscar" name="buscar" value="Buscar" />
-                </h3>
-                
-               
-                <br>
-                <h3 for="nombreProfesor">Nombre Profesor (*):  <input type="text" id="nombreProfesor" name="nombreProfesor" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
-               
-               
-            </form>
+				<br></br>
+				<h3 for="nombreProfesor">
+					Nombre Profesor (*):
+					<h:inputText type="text" id="nombreProfesor" name="nombreProfesor"
+						value="#{docenteBean.docente.nombre}" />
+				</h3>
 
 
-        </div>
+			</h:form>
 
-        
-</div>
 
-<input type="submit" id="crear" name="crear" value="Registrar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
+		</div>
+
+
+		<div class="login-form1">
+			<h:form>
+				<br></br>
+
+				<h3 for="nombreMateria">
+					Nombre Materia (*):
+					<h:inputText type="text" id="nombreMateria" name="nombreMateria"
+						value="#{docenteBean.asignatura.nombreAsignatura}"
+						placeholder="Ingrese el número de la Materia ..." />
+				</h3>
+
+
+				<br></br>
+				<h3 for="numeroHoras">
+					Numero Horas (*):
+					<h:inputText type="text" id="numeroHoras" name="numeroHoras"
+						value="#{docenteBean.asignatura.numHoras}"
+						placeholder="Ingrese el numero de Horas ..." />
+				</h3>
+
+
+
+				<br></br>
+				<h3 for="aula">
+					Asignar Aula (*)
+					<h:inputText type="text" id="aula" name="aula"
+						value="#{docenteBean.asignatura.espacioFisico}"
+						placeholder="Ingrese la aula ..." />
+					<h:commandButton action="#{docenteBean.crearAsignatura()}"
+						id="crear" name="crear" value="Registrar" />
+
+				</h3>
+
+			</h:form>
+
+
+		</div>
+
+
+		<h:form>
+			<h:commandButton action="MenuPrincipalDocente.xhtml?faces-redirect=true&amp;sesion=true" id="crear" name="crear"
+				value="Cancelar" />
+		</h:form>
+
+
+
+	</div>
+
 
 </body>
 

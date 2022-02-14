@@ -1,5 +1,7 @@
 package ec.edu.ups.SistemaEducativo1.bussiness;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -14,6 +16,10 @@ public class SolicitudesON implements SolicitudesONLocal,SolicitudesONRemote {
 	
 	public void crearSolicitud(Solicitudes s) throws Exception {
 		dao.insert(s);
+	}
+	
+	public List<Solicitudes> lista (){
+		return dao.getList();
 	}
 	
 }

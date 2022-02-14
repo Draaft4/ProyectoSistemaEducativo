@@ -6,7 +6,7 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <h:head>
-	<ui:define name="title">Registrar Estudiante</ui:define>
+	<ui:define name="title">Registrar Docente</ui:define>
 	<link href="../controladores/estiloCrear.css" rel="stylesheet" />
 	<style type="text/css">
 .error {
@@ -27,16 +27,25 @@
 			<h3 for="cedula">
 				Cedula (*):
 				<h:inputText type="text" id="cedula" name="cedula"
-					value="#{crearUsuarioBean.alumno.cedula}"
+					value="#{crearUsuarioBean.docente.cedula}"
 					placeholder="Ingrese el número de cedula ..." maxlength="10" />
 			</h3>
 			<br> </br>
 
 			<h3 for="nombres">
-				Nombre (*):
+				Nombre Completo (*):
 				<h:inputText type="text" id="nombres" name="nombres"
-					value="#{crearUsuarioBean.alumno.nombre}"
+					value="#{crearUsuarioBean.docente.nombre}"
 					placeholder="Ingrese sus dos nombres completos ..." />
+			</h3>
+
+			<br> </br>
+			
+			<h3 for="titulo">
+				Titulo Academico (*):
+				<h:inputText type="text" id="titulo" name="titulo"
+					value="#{crearUsuarioBean.docente.tituloAcademico}"
+					placeholder="Ingrese su titulo academico" />
 			</h3>
 
 			<br> </br>
@@ -52,7 +61,7 @@
 			<h3 for="fecha">
 				Fecha Nacimiento (*):
 				<h:inputText type="date" id="fechaNacimiento" name="fechaNacimiento"
-					value="#{crearUsuarioBean.alumno.fechaNacimiento}"
+					value="#{crearUsuarioBean.docente.fechaNacimiento}"
 					placeholder="Ingrese su fecha de nacimiento ...">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:inputText>
@@ -63,7 +72,7 @@
 			<h3 for="correo">
 				Correo electrónico (*):
 				<h:inputText type="email" id="correo" name="correo"
-					value="#{crearUsuarioBean.alumno.correo}"
+					value="#{crearUsuarioBean.docente.correo}"
 					placeholder="Ingrese su correo electrónico ..." />
 			</h3>
 			<br> </br>
@@ -71,11 +80,11 @@
 			<h3 for="correo">
 				Contraseña (*):
 				<h:inputText type="password" id="contrasena" name="contrasena"
-					value="#{crearUsuarioBean.alumno.contrasena}"
+					value="#{crearUsuarioBean.docente.contrasena}"
 					placeholder="Ingrese su contraseña ..." />
 			</h3>
 			<br> </br>
-			<h:commandButton action="#{crearUsuarioBean.crearAlumno()}"
+			<h:commandButton action="#{crearUsuarioBean.crearDocente()}"
 				value="Insertar Alumno" id="crear" name="crear"
 				class="btn btn-primary mr-2" />
 

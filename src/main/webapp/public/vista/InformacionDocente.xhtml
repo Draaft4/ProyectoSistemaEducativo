@@ -1,62 +1,85 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Informacion Docente</title>
-    <script type="text/javascript" src="validaciones_usuario.js"></script>
-    <link href="../controladores/estiloInformacionDocente.css" rel="stylesheet" />
-    <style type="text/css">
-        .error {
-            color: rgb(255, 230, 0);
-            font-size: 16px;
-        }
-    </style>
-</head>
+
+<h:head>
+	<f:metadata>
+		<f:viewParam name="cedula" value="#{docenteBean.docente.cedula}"></f:viewParam>
+		<f:viewAction action="#{docenteBean.obtenerDocente()}" />
+	</f:metadata>
+	<ui:define name="Informacion Estudiante">Informacion Docente</ui:define>
+	<link href="../controladores/estiloInformacionUsuario.css"
+		rel="stylesheet" />
+	<style type="text/css">
+		.error {
+			color: rgb(255, 230, 0);
+			font-size: 16px;
+		}
+	</style>
+</h:head>
 <div class="login">
-    <div class="login-header">
-        <h1>Informacion de Docente</h1>
-    </div>
-    <div class="login-form">
+	<div class="login-header">
+		<h1>Informacion de Usuario</h1>
+	</div>
+	<div class="login-form">
 
-        <body>
-            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
-            
-            
-            <br>
-           
-                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value=""  oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /> <input type="submit" id="buscar" name="buscar" value="Buscar" /></h3>
-                <span id="mensajeCedula" class="error"></span>
-               
-                <br>
-                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
-               
-                <span id="mensajeNombres" class="error"></span>
-                
-                <br>
-                <h3 for="direccion">Dirección (*) <input type="text" id="direccion" name="direccion" value=""  /></h3>              
-                <br>
-                <h3 for="fecha">Fecha Nacimiento (*):  <input type="date" id="fechaNacimiento" name="fechaNacimiento" value=""  /></h3>
-               
-                <span id="mensajeFecha" class="error"></span>
-                <br>
-                <h3 for="correo">Correo electrónico (*):  <input type="email" id="correo" name="correo" value=""  onkeyup="return validarCorreo(this)" /></h3>
-               
-                <span id="mensajeCorreo" class="error"></span>
-                <br>
 
-                <h3 for="titulo">Titulo (*) <input type="text" id="titulo" name="titulo" value=""  /></h3>
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
-            </form>
+		<form id="formulario01">
+			<br></br>
+			<h3 for="cedula">
+				Cedula (*):
+				<h:inputText type="text" id="cedula" name="cedula" value="#{docenteBean.docente.cedula}" maxlength="10" />
+				<h:commandButton action="#{docenteBean.obtenerDocente()}" value="Buscar" />
+			</h3>
+			<br></br>
 
-    </div>
+			<h3 for="nombres">
+				Nombre (*):
+				<h:inputText type="text" id="nombres" name="nombres" value="#{docenteBean.docente.nombre}" />
+			</h3>
 
-    
+			<br></br>
+			<h3 for="direccion">
+				Dirección (*)
+				<h:inputText type="text" id="direccion" name="direccion" value="#{docenteBean.docente.direccion}" />
+			</h3>
+			<br></br>
+			<h3 for="fecha">
+				Fecha Nacimiento (*):
+				<h:inputText type="date" id="fechaNacimiento" name="fechaNacimiento" value="#{docenteBean.docente.fechaNacimiento}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+			</h3>
+
+			<br></br>
+			<h3 for="correo">
+				Correo electrónico (*):
+				<h:inputText type="email" id="correo" name="correo" value="#{docenteBean.docente.correo}" />
+			</h3>
+
+			<br></br>
+			<h3 for="correo">
+				Contraseña (*):
+				<h:inputText type="password" id="contrasena" name="contrasena" value="#{docenteBean.docente.contrasena}" />
+			</h3>
+
+			<br></br>
+			<h3 for="titulo">
+				Titulo Academico (*):
+				<h:inputText type="text" id="titulo" name="text" value="#{docenteBean.docente.tituloAcademico}"/>
+			</h3>
+			<br></br>
+			<h:commandButton action="MenuPrincipalDocente.xhtml?faces-redirect=true&amp;sesion=true"
+				id="cancelar" name="cancelar" value="Cancelar" />
+		</form>
+
+	</div>
+
+
 
 </div>
-
-
-
-
-</body>
 
 </html>

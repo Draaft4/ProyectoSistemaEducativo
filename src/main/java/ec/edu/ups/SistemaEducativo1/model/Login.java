@@ -17,7 +17,9 @@ public class Login {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Login [user=" + user + ", pass=" + pass + "]";
+	}
 	
 }

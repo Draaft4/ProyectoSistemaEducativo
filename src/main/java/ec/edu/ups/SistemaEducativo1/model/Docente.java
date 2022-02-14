@@ -69,6 +69,13 @@ public class Docente extends Persona implements Serializable {
 	public void setSolicitudes(ArrayList<Solicitudes> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Docente [id=" + id + ", tituloAcademico=" + tituloAcademico + ", horario=" + horario + ", solicitudes="
+				+ solicitudes + "]";
+	}
 	
 
 

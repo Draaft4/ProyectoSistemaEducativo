@@ -41,41 +41,86 @@
 				class="btn btn-primary mr-2" />
 		</h:form>
 	</div>
+	<h:form>
+		<div class="login-form">
+			<center>
 
-	<div class="login-form">
-		<center>
-			<c:choose>
-				<c:when test="#{loginBean.sesion}">
-					<a href="matricula.xhtml"><img src="1.png" height="80"
-						width="100" /></a>
-				</c:when>
-				<c:otherwise>
-					<button ondblclick="myalert()">
-						<img src="1.png" height="80" width="100" />
-					</button>
+				<button ondblclick="myalert()">
+					<img src="1.png" height="80" width="100" />
+				</button>
 
-					<script>
+				<script>
+				        function myalert() {
+				            alert("Solo los estudiantes tienen acceso a la matriculacion");
+				        }
+    				</script>
+			</center>
+			<h3 for="direccion">Matriculacion</h3>
+		</div>
+	</h:form>
+	<h:form>
+		<div class="login-form2">
+			<center>
+				<center>
+					<c:choose>
+						<c:when test="#{loginBean.sesion}">
+							<a href="InformacionDocente.xhtml?faces-redirect&amp;cedula=0"><img
+								src="4.png" height="80" width="100" /></a>
+						</c:when>
+						<c:otherwise>
+							<button ondblclick="myalert()">
+								<img src="4.png" height="80" width="100" />
+							</button>
+
+							<script>
 				        function myalert() {
 				            alert("Error: Por favor inicie sesion.");
 				        }
     				</script>
-				</c:otherwise>
-			</c:choose>
-		</center>
-		<h3 for="direccion">Matriculacion</h3>
-	</div>
+						</c:otherwise>
+					</c:choose>
+				</center>
 
-	<div class="login-form2">
-		<center>
+			</center>
+			<h3 for="direccion">Perfil</h3>
+		</div>
+	</h:form>
+	<h:form>
+		<div class="login-form3">
 			<center>
 				<c:choose>
 					<c:when test="#{loginBean.sesion}">
-						<a href="InformacionUsuario.xhtml"><img src="4.png"
+						<a href="VerSolicitudes.xhtml"><img src="6.png" height="80"
+							width="100" /></a>
+					</c:when>
+					<c:otherwise>
+						<button ondblclick="myalert()">
+							<img src="6.png" height="80" width="100" />
+						</button>
+
+						<script>
+				        function myalert() {
+				            alert("Error: Por favor inicie sesion.");
+				        }
+    				</script>
+					</c:otherwise>
+				</c:choose>
+
+			</center>
+			<h3 for="direccion">Solicitudes</h3>
+		</div>
+	</h:form>
+	<h:form>
+		<div class="login-form4">
+			<center>
+				<c:choose>
+					<c:when test="#{loginBean.sesion}">
+						<a href="IngresarCalificaciones.xhtml"><img src="8.png"
 							height="80" width="100" /></a>
 					</c:when>
 					<c:otherwise>
 						<button ondblclick="myalert()">
-							<img src="4.png" height="80" width="100" />
+							<img src="8.png" height="80" width="100" />
 						</button>
 
 						<script>
@@ -86,82 +131,33 @@
 					</c:otherwise>
 				</c:choose>
 			</center>
+			<h3 for="direccion">Calificaciones</h3>
+		</div>
+	</h:form>
+	<h:form>
+		<div class="login-form5">
+			<center>
+				<c:choose>
+					<c:when test="#{loginBean.sesion}">
+						<a href="RegistroAsignatura.xhtml"><img src="5.png"
+							height="80" width="100" /></a>
+					</c:when>
+					<c:otherwise>
+						<button ondblclick="myalert()">
+							<img src="5.png" height="80" width="100" />
+						</button>
 
-		</center>
-		<h3 for="direccion">Perfil</h3>
-	</div>
-
-	<div class="login-form3">
-		<center>
-			<c:choose>
-				<c:when test="#{loginBean.sesion}">
-					<a href="Solicitudes.xhtml"><img src="6.png" height="80"
-						width="100" /></a>
-				</c:when>
-				<c:otherwise>
-					<button ondblclick="myalert()">
-						<img src="6.png" height="80" width="100" />
-					</button>
-
-					<script>
+						<script>
 				        function myalert() {
 				            alert("Error: Por favor inicie sesion.");
 				        }
     				</script>
-				</c:otherwise>
-			</c:choose>
-
-		</center>
-		<h3 for="direccion">Solicitudes</h3>
-	</div>
-
-	<div class="login-form4">
-		<center>
-			<c:choose>
-				<c:when test="#{loginBean.sesion}">
-					<a href="IngresarCalificaciones.xhtml"><img src="8.png"
-						height="80" width="100" /></a>
-				</c:when>
-				<c:otherwise>
-					<button ondblclick="myalert()">
-						<img src="8.png" height="80" width="100" />
-					</button>
-
-					<script>
-				        function myalert() {
-				            alert("Error: Por favor inicie sesion.");
-				        }
-    				</script>
-				</c:otherwise>
-			</c:choose>
-
-		</center>
-		<h3 for="direccion">Calificaciones</h3>
-	</div>
-
-	<div class="login-form5">
-		<center>
-			<c:choose>
-				<c:when test="#{loginBean.sesion}">
-					<a href="RegistroAsignatura.xhtml"><img src="5.png" height="80"
-						width="100" /></a>
-				</c:when>
-				<c:otherwise>
-					<button ondblclick="myalert()">
-						<img src="5.png" height="80" width="100" />
-					</button>
-
-					<script>
-				        function myalert() {
-				            alert("Error: Por favor inicie sesion.");
-				        }
-    				</script>
-				</c:otherwise>
-			</c:choose>
-		</center>
-		<h3 for="direccion">Registro Asignaturas</h3>
-	</div>
-
+					</c:otherwise>
+				</c:choose>
+			</center>
+			<h3 for="direccion">Registro Asignaturas</h3>
+		</div>
+	</h:form>
 
 
 	<div id="informacion"></div>

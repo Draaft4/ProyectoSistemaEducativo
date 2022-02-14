@@ -1,89 +1,98 @@
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Matricular</title>
-    <script type="text/javascript" src="validaciones_usuario.js"></script>
-    <link href="../controladores/estiloMatricula.css" rel="stylesheet" />
-    <style type="text/css">
-        .error {
-            color: rgb(255, 230, 0);
-            font-size: 16px;
-        }
-    </style>
+<ui:define name="title">Matricular</ui:define>
+<link href="../controladores/estiloMatricula.css" rel="stylesheet" />
+<style type="text/css">
+.error {
+	color: rgb(255, 230, 0);
+	font-size: 16px;
+}
+</style>
 </head>
 <div class="login">
-    <div class="login-header">
-        <h1>Matricula</h1>
-    </div>
-    <div class="login-form">
+	<div class="login-header">
+		<h1>Matricula</h1>
+	</div>
+	<div class="login-form">
 
-        <body>
-            <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
-            
-            
-            <br>
-           
-                <h3 for="cedula">Cedula (*):  <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." oninput="return validarCedula(this)" onkeyup="return numeroCedula(this)" maxlength="10" /> 
-                    <input type="submit" id="buscar" name="buscar" value="Buscar" /></h3>
-                
-                <span id="mensajeCedula" class="error"></span>
-               
-                <br>
-                <h3 for="fecha">Fecha Inscripcion (*):  <input type="date" id="fechaInscripcion" name="fechaInscripcion" value="" placeholder="Ingrese su fecha de Inscripcion ..." /></h3>
-               
-                <br>
-                <h3 for="nombres">Nombre (*):  <input type="text" id="nombres" name="nombres" value=""  onkeyup="return validarNombres(this)" onkeyup="return validarLetras(this)" onkeyup="return validarNombre(this)" /></h3>
-               
-                <span id="mensajeNombres" class="error"></span>
-                
-                <br>
+		<h:form id="formulario01">
 
-                <h3 for="asig">Asignatura (*):
-                    <select id="asignatura" name="asignatura">
-                        <option value=""></option>
-                        <option type="text" value="estudiante">Estudiante</option>
-                      </select>
-                </h3>
-                <br>
-                
 
-                <br>
-                
-                <table >
-                    <tr>
-                      <th>Codigo</th>
-                      <th>Nombre</th>
-                      <th>Docente</th>
-                      <th>Numero de Horas</th>
-                      <th>Aula</th>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  
-                  </table>
-                  <br>
-                  <br>
+			<br> </br>
 
-                  <input type="submit" id="agregar" name="agregar" value="Agregar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='login.html'" />
-                <input type="submit" id="matricular" name="matricular" value="Matricular" />
-            </form>
+			<h3 for="cedula">
+				Cedula (*):
+				<h:inputText type="text" id="cedula" name="cedula" value="#{alumnoBean.alumno.cedula}"
+					placeholder="Ingrese el número de cedula ..." maxlength="10" />
+				<h:commandButton action="#{alumnoBean.obtenerAlumno()}" id="buscar" name="buscar" value="Buscar" />
+			</h3>
 
-    </div>
+			<span id="mensajeCedula" class="error"></span>
+			<br> </br>
 
-    
+			<h3 for="fecha">
+				Fecha Inscripcion (*):
+				<h:inputText type="date" id="fechaInscripcion"
+					name="fechaInscripcion" value="#{alumnoBean.fechaInscripcion}"
+					placeholder="Ingrese su fecha de Inscripcion ...">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:inputText>
+			</h3>
+
+			<br></br>
+			<h3 for="nombres">
+				Nombre (*):
+				<h:inputText type="text" id="nombres" name="nombres" value="#{alumnoBean.alumno.nombre}" />
+			</h3>
+
+			<h3 for="asig">
+				Codigo Asignatura (*):
+				<h:inputText type="text" id="codAs" name="codAs" value="#{alumnoBean.codAsignatura}" />
+
+				<h:commandButton action="#{alumnoBean.matricular()}" id="agregar" name="agregar" value="Agregar" />
+			</h3>
+			<br></br>
+			<br></br>
+			<h:dataTable value="#{alumnoBean.listAsignatura}" var="row" id="tabla">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Codigo" />
+					</f:facet>
+					<h:outputText value="#{row.codigo}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{row.nombreAsignatura}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Docente" />
+					</f:facet>
+					<h:outputText value="#{row.docente.nombre}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Espacio fisico" />
+					</f:facet>
+					<h:outputText value="#{row.espacioFisico}" />
+				</h:column>
+			</h:dataTable>
+			
+			<br></br>
+			<h:commandButton action="MenuPrincipalEstudiante.xhtml?faces-redirect=true&amp;sesion=true" id="cancelar" name="cancelar" value="Salir" />
+		</h:form>
+
+	</div>
+
+
 
 </div>
 
-
-
-
-</body>
 
 </html>

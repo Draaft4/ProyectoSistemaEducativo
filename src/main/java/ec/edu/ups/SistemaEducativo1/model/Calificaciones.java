@@ -42,6 +42,11 @@ public class Calificaciones implements Serializable{
 	public void setNotaParcial(double notaParcial) {
 		this.notaParcial = notaParcial;
 	}
+
+	@Override
+	public String toString() {
+		return "Calificaciones [id=" + id + ", notaParcial=" + notaParcial + "]";
+	}
 	
 	
 }
