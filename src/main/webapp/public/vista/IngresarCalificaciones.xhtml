@@ -59,7 +59,7 @@
 			<br></br>
 			<h:commandButton type="summit" action="#{alumnoBean.agregarCalificacion()}"
 				id="aceptar" name="aceptar" value="Aceptar" class="btn btn-primary mr-2"  />
-			<h:commandButton action="MenuPrincipalDocente?faces-redirect=true&amp;sesion=true" id="cancelar" name="cancelar"
+			<h:commandButton action="#{redireccionarBean.redMenuPrincipalDocente()}" id="cancelar" name="cancelar"
 				value="Cancelar" />
 		</h:form>
 	</div>

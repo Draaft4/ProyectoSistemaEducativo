@@ -22,13 +22,15 @@
 
 	<div class="login-header">
 		<h1>Hola, bienvenido</h1>
-		<a href="crear_usuario.xhtml" class="bn3637 bn36">Registrarse</a>
+		<h:link value="Registrarse"
+			outcome="#{redireccionarBean.redEscojerTipo()}" class="bn3637 bn36" />
 		<c:when test="#{loginBean.sesion}">
-			<a href="login.xhtml" class="bn3637 bn36">Iniciar Sesion</a>
+			<h:link value="Iniciar Sesion"
+				outcome="#{redireccionarBean.redLogin()}" class="bn3637 bn36" />
 		</c:when>
 		<c:otherwise>
-			<a href="#{loginBean.cerrarSesion()}" class="bn3637 bn36">Cerrar
-				Sesion</a>
+			<h:link value="Cerrar Sesion" outcome="#{loginBean.cerrarSesion()}"
+				class="bn3637 bn36" />
 		</c:otherwise>
 		<br></br> <br></br>
 		<h:form>
@@ -46,14 +48,14 @@
 		<center>
 			<c:choose>
 				<c:when test="#{loginBean.sesion}">
-					<a href="matricula.xhtml"><img src="1.png" height="80"
-						width="100" /></a>
+					<h:link outcome="#{redireccionarBean.redMatricula()}" value="">
+						<h:graphicImage value="/public/vista/1.jpg" />
+					</h:link>
 				</c:when>
 				<c:otherwise>
 					<button ondblclick="myalert()">
-						<img src="1.png" height="80" width="100" />
+						<h:graphicImage value="/public/vista/1.jpg" />
 					</button>
-
 					<script>
 				        function myalert() {
 				            alert("Error: Por favor inicie sesion.");
@@ -70,12 +72,13 @@
 			<center>
 				<c:choose>
 					<c:when test="#{loginBean.sesion}">
-						<a href="InformacionUsuario.xhtml?faces-redirect=true&amp;cedula=#{loginBean.cedula}"><img src="4.png"
-							height="80" width="100" /></a>
+						<h:link outcome="#{redireccionarBean.redInformacionEstudiante()}" value="">
+							<h:graphicImage value="/public/vista/4.jpg" />
+						</h:link>
 					</c:when>
 					<c:otherwise>
 						<button ondblclick="myalert()">
-							<img src="4.png" height="80" width="100" />
+							<h:graphicImage value="/public/vista/4.jpg" />
 						</button>
 
 						<script>
@@ -95,12 +98,13 @@
 		<center>
 			<c:choose>
 				<c:when test="#{loginBean.sesion}">
-					<a href="Solicitudes.xhtml"><img src="6.png" height="80"
-						width="100" /></a>
+					<h:link outcome="#{redireccionarBean.redSolicitudes()}" value="">
+						<h:graphicImage value="/public/vista/6.jpg" />
+					</h:link>
 				</c:when>
 				<c:otherwise>
 					<button ondblclick="myalert()">
-						<img src="6.png" height="80" width="100" />
+						<h:graphicImage value="/public/vista/6.jpg" />
 					</button>
 
 					<script>
@@ -119,12 +123,13 @@
 		<center>
 			<c:choose>
 				<c:when test="#{loginBean.sesion}">
-					<a href="ListarCalificaciones.xhtml"><img src="8.png"
-						height="80" width="100" /></a>
+				<h:link outcome="#{redireccionarBean.redListarCalificaciones()}" value="">
+					<h:graphicImage value="/public/vista/8.jpg" />
+				</h:link>
 				</c:when>
 				<c:otherwise>
 					<button ondblclick="myalert()">
-						<img src="8.png" height="80" width="100" />
+						<h:graphicImage value="/public/vista/8.jpg" />
 					</button>
 
 					<script>
@@ -142,10 +147,10 @@
 	<div class="login-form5">
 		<center>
 			<button ondblclick="myalert()">
-						<img src="5.png" height="80" width="100" />
-					</button>
+				<h:graphicImage value="/public/vista/5.jpg" />
+			</button>
 
-					<script>
+			<script>
 				        function myalert() {
 				            alert("Solo docentes pueden crear asignaturas");
 				        }
