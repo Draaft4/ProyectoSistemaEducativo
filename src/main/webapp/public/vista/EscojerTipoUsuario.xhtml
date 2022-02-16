@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+	<ui:define name="title">Registrar Estudiante</ui:define>
+	<link href="../controladores/estiloCrear.css" rel="stylesheet" />
+	<style type="text/css">
+.error {
+	color: rgb(255, 230, 0);
+	font-size: 16px;
+}
+</style>
+</h:head>
+<body>
+	<div class="login">
+
+		<div class="login-header">
+			<h1>Seleccione su tipo de usuario</h1>
+			<br></br> <br></br>
+			<div class="login-header">
+			</div>
+			<div class="login-form">
+				<h:form id="formulario01">
+					<h:commandButton action="crear_usuario.xhtml" id="alumno"
+						name="alumno" value="Estudiante" class="btn btn-primary mr-2" />
+					<br /> <br />
+					<h:commandButton action="crear_docente.xhtml" id="docente"
+						name="docente" value="Docente" class="btn btn-primary mr-2" />
+					<br /> <br />
+					<h:commandButton action="MenuPrincipal.xhtml" id="return"
+						name="return" value="Regresar" class="btn btn-primary mr-2" />
+				</h:form>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+
+</html>
