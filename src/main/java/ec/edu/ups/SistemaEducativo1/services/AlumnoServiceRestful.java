@@ -1,11 +1,13 @@
 package ec.edu.ups.SistemaEducativo1.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -118,6 +120,36 @@ public class AlumnoServiceRestful {
 			return e.getMessage();
 		}
 		 return "";
+	}
+	
+	@GET
+	@Path("asignaturas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Asignatura getAsignaturaCodigo(@QueryParam("codigo")int codigo) {
+		Asignatura x = new Asignatura();
+		try {
+			x = daoAsignaturas.obtenerAsignatura(codigo);
+		} catch (Exception e) {
+		}
+		return x;
+	}
+	
+	@POST
+	@Path("matriculacion")
+	public void matriculacion(@QueryParam("cedula")String cedula,@QueryParam("asignatura")int codAsignatura) {
+		List<Asignatura> lista = daoAsignaturas.getList();
+		Alumno alumno = dao.obtenerAlumno(cedula);
+		alumno.setFechaInscripcion(new Date());
+		for(Asignatura asg:lista) {
+			if(asg.getCodigo()==codAsignatura) {
+				alumno.getAsignaturas().add(asg);
+				break;
+			}
+		}
+		try {
+			dao.actualiarAlumno(alumno);
+		} catch (Exception e) {
+		}
 	}
 
 }

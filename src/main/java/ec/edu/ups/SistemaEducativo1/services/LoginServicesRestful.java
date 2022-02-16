@@ -32,24 +32,31 @@ public class LoginServicesRestful {
 		System.out.println(login.getPass()+" "+login.getUser());
 		String respuesta="{\"response\":\"Error: no existe el correo indicado.\"}";
 		for(Alumno alumno: listaAlumnos) {
+			System.out.println("entra alumnos");
 			if(!alumno.getCorreo().equals(login.getUser())) {
+				System.out.println("Correo no existe");
 				respuesta="{\"response\":\"Error: no existe el correo indicado.\"}";
 			}else {
+				System.out.println("Correo si existe");
 				if(!alumno.getContrasena().equals(login.getPass())) {
+					System.out.println("Mal contra");
 					respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
 				}else {
+					System.out.println("ok");
 					respuesta="{\"response\":\"OK.\"}";
 				}
 			}
 		}
-		for(Docente docente: listaDocentes) {
-			if(!docente.getCorreo().equals(login.getUser())) {
-				respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
-			}else {
-				if(!docente.getContrasena().equals(login.getPass())) {
-					respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
+		if(!respuesta.equals("{\"response\":\"OK.\"}")) {
+			for(Docente docente: listaDocentes) {
+				if(!docente.getCorreo().equals(login.getUser())) {
+					respuesta="{\"response\":\"Error: no existe el correo indicado.\"}";
 				}else {
-					respuesta="{\"response\":\"OK.\"}";
+					if(!docente.getContrasena().equals(login.getPass())) {
+						respuesta="{\"response\":\"Error: la contraseña es incorrecta.\"}";
+					}else {
+						respuesta="{\"response\":\"OK.\"}";
+					}
 				}
 			}
 		}
